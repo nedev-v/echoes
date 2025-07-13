@@ -1,12 +1,18 @@
-import { RecordButton } from './screens/HomeScreen.tsx/shared/components/RecordButton'
+
+import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { HomeScreen } from './screens/HomeScreen';
+import { AuthScreen } from "./screens/AuthScreen";
 
 function App() {
 
   return (
     <>
-      <div className='w-[600px] h-screen mx-auto flex justify-center items-center'>
-        <RecordButton />
-      </div>
+      <BrowserRouter>
+        <Routes>
+        <Route path="/" element={<HomeScreen />} />
+        <Route path="/auth" element={<AuthScreen />} />
+      </Routes>
+      </BrowserRouter>
     </>
   )
 }

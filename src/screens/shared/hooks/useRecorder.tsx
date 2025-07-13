@@ -20,6 +20,11 @@ export function useRecorder(mimeHint = "audio/webm;codecs=opus") {
 
         mediaRec.onstop = () => {
             const blob = new Blob(chunksRef.current, { type: mime });
+            const uuid = crypto.randomUUID();
+            const extension = mime.split('/')[1] || 'webm';
+            const file = new File([blob], `${uuid}.${extension}`, { type: mime });
+            //TODO: Call to the api to create a voice
+            //setting preview, needed? 
             setUrl(URL.createObjectURL(blob));
         }
         
